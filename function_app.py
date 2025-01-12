@@ -9,7 +9,7 @@ app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
 def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
     logging.info("Python HTTP trigger function processed a request.")
 
-    time.sleep(req.get_json().get("secounds"))
+    time.sleep(req.get_json().get("secounds", None))
 
     unidades_consumidoras = req.get_json().get("unidades_consumidoras")
     if unidades_consumidoras:

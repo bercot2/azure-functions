@@ -13,3 +13,49 @@ https://learn.microsoft.com/pt-br/azure/azure-functions/functions-run-local?tabs
  - Deverá clicar F1 no VS Code e criar o app do function.
  - Após criar o app do Function, deverá configurar o repositório do git na parte de armazenamento do app.
  - Agora basta clicar F1 e escolher a opção Azure Functions: Deploy to Function App.
+
+# Configurar Deploy automático via "Push" na Branch principal configurada na Function Azure
+
+- Configurar no action gerado pela Azure conforme abaixo:
+```
+    # Deploy para o Azure Functions
+    - name: Deploy to Azure Functions
+      uses: Azure/functions-action@v1
+      with:
+        app-name: "function-azure-teste-b2"  # Nome do Function App no Azure
+        package: "."                        # Diretório do código
+        publish-profile: "${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}"
+```
+
+- Criar o Publish Profile no Azure
+O publish profile é necessário para autenticar o GitHub com o Azure Functions.
+
+No portal do Azure:
+
+Navegue até o seu Function App.
+
+Vá para Configurações > Deployment > Deployment Center.
+Clique em Get Publish Profile para baixar o arquivo de perfil de publicação.
+
+No GitHub:
+
+Vá até o repositório.
+
+Clique em Settings > Secrets and variables > Actions > New repository secret.
+Adicione um segredo com o nome AZURE_FUNCTIONAPP_PUBLISH_PROFILE e cole o conteúdo do publish profile.
+
+# Formas de configurar funções separadamente
+ - Exemplo de estrutura abaixo:
+```
+├── HttpTriggerFunction/
+│   ├── __init__.py       # Código do HttpTrigger
+│   ├── function.json     # Configuração da função HTTP Trigger
+├── TimerTriggerFunction/
+│   ├── __init__.py       # Código do TimerTrigger
+│   ├── function.json     # Configuração da função Timer Trigger
+├── requirements.txt       # Dependências do projeto
+├── host.json              # Configuração do app
+├── local.settings.json    # Configuração local (opcional)
+```
+
+Nesse formato, cada function deverá ter sua própria pasta
