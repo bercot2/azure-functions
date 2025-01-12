@@ -38,7 +38,7 @@ import logging
     schedule="0 * * * * *", arg_name="myTimer", run_on_startup=False, use_monitor=False
 )
 def timer_trigger(myTimer: func.TimerRequest) -> None:
-    logging.info("Python timer trigger function executing.")
+    logging.info("Executando Function Timer")
 
     # Executa a lógica assíncrona para processar as requisições
     asyncio.run(execute_parallel_requests())
