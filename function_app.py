@@ -51,9 +51,7 @@ def timer_trigger(myTimer: func.TimerRequest) -> None:
 
 async def execute_parallel_requests():
     # URL do endpoint da Azure Function HTTP Trigger
-    http_trigger_url = (
-        "http://localhost:7071/api/http_trigger"  # Substitua pela URL correta
-    )
+    http_trigger_url = "https://function-teste-b2.azurewebsites.net/api/http_trigger?code=x5N-CmeYZRLB90Sbd4tfdT8iZ7KAqEWUL8zj5e11NP1fAzFukGEuSA%3D%3D"
 
     # Diferentes payloads para as 5 requisições
     payloads = [
