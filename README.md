@@ -60,6 +60,7 @@ Adicione um segredo com o nome AZURE_FUNCTIONAPP_PUBLISH_PROFILE e cole o conte�
 
 Nesse formato, cada function deverá ter sua própria pasta
 
+- A variável de Ambiente abaixo pode ocasionar problema, caso ocorra problema, basta remover essa variável de ambiente, caso esteja utilizando o deploy via git actions
 {
     "name": "WEBSITE_RUN_FROM_PACKAGE",
     "value": "https://functionoperacaocpb2.blob.core.windows.net/github-actions-deploy/Functionapp_2025112193629437.zip?sv=2023-11-03&st=2025-01-12T19%3A31%3A32Z&se=2026-01-12T19%3A36%3A32Z&sr=b&sp=r&sig=rVRrNSMj61d8zFfwNNHSwd7mu6y06iu2b%2BR4btzW6TE%3D",
