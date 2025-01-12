@@ -75,5 +75,6 @@ jobs:
         with:
           app-name: 'function-azure-teste-b2'
           slot-name: 'Production'
-          package: '${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}'
+          package: "."
+          publish-profile: '${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}'
           
