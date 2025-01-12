@@ -39,7 +39,7 @@ import logging
     arg_name="myTimer",
     run_on_startup=False,
     use_monitor=False,
-    disabled=True,
+    disabled=False,
 )
 def timer_trigger(myTimer: func.TimerRequest) -> None:
     logging.info("Executando Function Timer")
