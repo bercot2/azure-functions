@@ -58,8 +58,31 @@ Adicione um segredo com o nome AZURE_FUNCTIONAPP_PUBLISH_PROFILE e cole o conte�
 ├── local.settings.json    # Configuração local (opcional)
 ```
 
+> Exemplo do arquivo function.json
+```
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "route": "http_trigger",
+      "methods": ["get", "post"]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}
+```
+
 Nesse formato, cada function deverá ter sua própria pasta
 
+> Possíveis erros
 - A variável de Ambiente abaixo pode ocasionar problema, caso ocorra problema, basta remover essa variável de ambiente, caso esteja utilizando o deploy via git actions
 {
     "name": "WEBSITE_RUN_FROM_PACKAGE",
