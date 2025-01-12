@@ -35,7 +35,11 @@ import logging
 
 
 @app.timer_trigger(
-    schedule="0 * * * * *", arg_name="myTimer", run_on_startup=False, use_monitor=False
+    schedule="0 * * * * *",
+    arg_name="myTimer",
+    run_on_startup=False,
+    use_monitor=False,
+    disabled=False,
 )
 def timer_trigger(myTimer: func.TimerRequest) -> None:
     logging.info("Executando Function Timer")
