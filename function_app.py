@@ -16,20 +16,19 @@ if not HTTP_TRIGGER_URL:
     raise ValueError("A variável de ambiente 'HTTP_TRIGGER_URL' não foi configurada.")
 
 
-@app.timer_trigger(
-    schedule="0 * * * * *",
-    arg_name="myTimer",
-    run_on_startup=False,
-    use_monitor=False,
-    disabled=True,
-)
-def timer_trigger(myTimer: func.TimerRequest) -> None:
-    logging.info("Executando Function Timer")
+# @app.timer_trigger(
+#     schedule="0 * * * * *",
+#     arg_name="myTimer",
+#     run_on_startup=False,
+#     use_monitor=False
+# )
+# def timer_trigger(myTimer: func.TimerRequest) -> None:
+#     logging.info("Executando Function Timer")
 
-    # Executa a lógica assíncrona para processar as requisições
-    asyncio.run(execute_parallel_requests())
+#     # Executa a lógica assíncrona para processar as requisições
+#     asyncio.run(execute_parallel_requests())
 
-    logging.info("Todas as requisições foram concluídas.")
+#     logging.info("Todas as requisições foram concluídas.")
 
 
 async def execute_parallel_requests():
