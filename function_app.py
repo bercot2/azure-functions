@@ -39,6 +39,8 @@ import logging
 # Obtém a URL do HTTP Trigger da variável de ambiente
 HTTP_TRIGGER_URL = os.getenv("HTTP_TRIGGER_URL")
 
+if not HTTP_TRIGGER_URL:
+    raise ValueError("A variável de ambiente 'HTTP_TRIGGER_URL' não foi configurada.")
 
 @app.timer_trigger(
     schedule="0 * * * * *",
