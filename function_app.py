@@ -75,7 +75,6 @@ async def make_request(session: aiohttp.ClientSession, url, payload: dict):
                 return {"error": f"Status {response.status}"}
     except Exception as e:
         # Trata erros durante a requisição
-        logging.info(response.text())
         logging.error(e)
         return {"error": str(e)}
 
