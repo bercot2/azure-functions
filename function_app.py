@@ -1,15 +1,12 @@
-import azure.functions as func
-import logging
+import os
 import json
 import time
-
-app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
-
-
-import os
 import aiohttp
 import asyncio
 import logging
+import azure.functions as func
+
+app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
 
 # Obtém a URL do HTTP Trigger da variável de ambiente
 HTTP_TRIGGER_URL = os.getenv("HTTP_TRIGGER_URL")
