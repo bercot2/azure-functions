@@ -62,7 +62,7 @@ async def execute_parallel_requests():
         logging.info(f"Resposta da requisição {idx + 1}: {response}")
 
 
-async def make_request(session, url, payload):
+async def make_request(session: aiohttp.ClientSession, url, payload: dict):
     try:
         logging.info(f"realizando request | payload: {payload}")
 
@@ -75,6 +75,8 @@ async def make_request(session, url, payload):
                 return {"error": f"Status {response.status}"}
     except Exception as e:
         # Trata erros durante a requisição
+        logging.info(response.text())
+        logging.error(e)
         return {"error": str(e)}
 
 
