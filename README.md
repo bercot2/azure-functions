@@ -9,13 +9,10 @@ https://learn.microsoft.com/pt-br/azure/azure-functions/functions-develop-vs-cod
 - Desenvolver o Azure Functions localmente usando o Core Tools
 https://learn.microsoft.com/pt-br/azure/azure-functions/functions-run-local?tabs=windows%2Cisolated-process%2Cnode-v4%2Cpython-v2%2Chttp-trigger%2Ccontainer-apps&pivots=programming-language-python
 
-# Forma de subir Function para o APP
+# Forma de subir Function para o FunctionAPP localmente
  - Deverá clicar F1 no VS Code e criar o app do function.
  - Após criar o app do Function, deverá configurar o repositório do git na parte de armazenamento do app.
  - Agora basta clicar F1 e escolher a opção Azure Functions: Deploy to Function App.
-
-# Como criar uma function manualmente
-func new
 
 # Como verificar as functions existentes no app
 az functionapp function list --name <NOME_DA_FUNCTION_APP> --resource-group <NOME_DO_GRUPO_DE_RECURSOS>
@@ -31,7 +28,11 @@ az functionapp function list --name <NOME_DA_FUNCTION_APP> --resource-group <NOM
         app-name: "function-azure-teste-b2"  # Nome do Function App no Azure
         package: "."                        # Diretório do código
         publish-profile: "${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}"
+        scm-do-build-during-deployment: true
+        enable-oryx-build: true
 ```
+
+> Os comandos `scm-do-build-during-deployment: true` e `enable-oryx-build: true` são necessários para que seja buildado o código e fazer com que apareça as functions no portal.'
 
 - Criar o Publish Profile no Azure
 O publish profile é necessário para autenticar o GitHub com o Azure Functions.

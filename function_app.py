@@ -78,7 +78,7 @@ async def make_request(session, url, payload):
 def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
     logging.info("Python HTTP trigger function processed a request.")
 
-    time.sleep(req.get_json().get("secounds", None))
+    time.sleep(req.get_json().get("secounds", 0))
 
     unidades_consumidoras = req.get_json().get("unidades_consumidoras")
     if unidades_consumidoras:
