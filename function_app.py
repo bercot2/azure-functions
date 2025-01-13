@@ -42,12 +42,13 @@ HTTP_TRIGGER_URL = os.getenv("HTTP_TRIGGER_URL")
 if not HTTP_TRIGGER_URL:
     raise ValueError("A variável de ambiente 'HTTP_TRIGGER_URL' não foi configurada.")
 
+
 @app.timer_trigger(
     schedule="0 * * * * *",
     arg_name="myTimer",
     run_on_startup=False,
     use_monitor=False,
-    disabled=False,
+    disabled=True,
 )
 def timer_trigger(myTimer: func.TimerRequest) -> None:
     logging.info("Executando Function Timer")
