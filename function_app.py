@@ -31,10 +31,13 @@ def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
         status_code=200,
     )
 
-
+import os
 import aiohttp
 import asyncio
 import logging
+
+# Obtém a URL do HTTP Trigger da variável de ambiente
+HTTP_TRIGGER_URL = os.getenv("HTTP_TRIGGER_URL")
 
 
 @app.timer_trigger(
@@ -54,9 +57,6 @@ def timer_trigger(myTimer: func.TimerRequest) -> None:
 
 
 async def execute_parallel_requests():
-    # URL do endpoint da Azure Function HTTP Trigger
-    http_trigger_url = "https://function-teste-b2.azurewebsites.net/api/http_trigger?code=x5N-CmeYZRLB90Sbd4tfdT8iZ7KAqEWUL8zj5e11NP1fAzFukGEuSA%3D%3D"
-
     # Diferentes payloads para as 5 requisições
     payloads = [
         {"unidades_consumidoras": [1, 2, 3], "secounds": 5},
@@ -75,7 +75,7 @@ async def execute_parallel_requests():
             logging.info(f"Inicializando o payload: {payload}")
 
             # Cria uma tarefa para cada requisição
-            tasks.append(make_request(session, http_trigger_url, payload))
+            tasks.append(make_request(session, HTTP_TRIGGER_URL, payload))
 
         # Aguarda a conclusão de todas as tarefas
         responses = await asyncio.gather(*tasks)
