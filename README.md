@@ -14,6 +14,12 @@ https://learn.microsoft.com/pt-br/azure/azure-functions/functions-run-local?tabs
  - Após criar o app do Function, deverá configurar o repositório do git na parte de armazenamento do app.
  - Agora basta clicar F1 e escolher a opção Azure Functions: Deploy to Function App.
 
+# Como criar uma function manualmente
+func new
+
+# Como verificar as functions existentes no app
+az functionapp function list --name <NOME_DA_FUNCTION_APP> --resource-group <NOME_DO_GRUPO_DE_RECURSOS>
+
 # Configurar Deploy automático via "Push" na Branch principal configurada na Function Azure
 
 - Configurar no action gerado pela Azure conforme abaixo:
