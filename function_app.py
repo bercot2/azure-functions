@@ -87,6 +87,7 @@ def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
                 {
                     "response": "Lista Processada",
                     "return": unidades_consumidoras,
+                    "message": "Gabi Gay",
                 }
             ),
             mimetype="application/json",
