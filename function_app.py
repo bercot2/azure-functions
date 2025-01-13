@@ -45,7 +45,9 @@ async def execute_parallel_requests():
     tasks = []
 
     # Cria uma sessão HTTP assíncrona
-    async with aiohttp.ClientSession() as session:
+    async with aiohttp.ClientSession(
+        timeout=aiohttp.ClientTimeout(total=120)
+    ) as session:
         for payload in payloads:
             logging.info(f"Inicializando o payload: {payload}")
 
@@ -62,6 +64,8 @@ async def execute_parallel_requests():
 
 async def make_request(session, url, payload):
     try:
+        logging.info(f"realizando request | payload: {payload}")
+
         async with session.post(url, json=payload) as response:
             if response.status == 200:
                 # Retorna o JSON da resposta
@@ -87,7 +91,6 @@ def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
                 {
                     "response": "Lista Processada",
                     "return": unidades_consumidoras,
-                    "message": "Gabi Gay",
                 }
             ),
             mimetype="application/json",
