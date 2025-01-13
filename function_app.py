@@ -34,11 +34,11 @@ def timer_trigger(myTimer: func.TimerRequest) -> None:
 async def execute_parallel_requests():
     # Diferentes payloads para as 5 requisições
     payloads = [
-        {"unidades_consumidoras": [1, 2, 3], "secounds": 5},
-        {"unidades_consumidoras": [4, 5, 6], "secounds": 5},
-        {"unidades_consumidoras": [7, 8, 9], "secounds": 5},
-        {"unidades_consumidoras": [10, 11, 12], "secounds": 5},
-        {"unidades_consumidoras": [13, 14, 15], "secounds": 5},
+        {"unidades_consumidoras": [1, 2, 3], "secounds": 0},
+        {"unidades_consumidoras": [4, 5, 6], "secounds": 0},
+        {"unidades_consumidoras": [7, 8, 9], "secounds": 0},
+        {"unidades_consumidoras": [10, 11, 12], "secounds": 0},
+        {"unidades_consumidoras": [13, 14, 15], "secounds": 0},
     ]
 
     # Lista para armazenar as tarefas
