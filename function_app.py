@@ -4,6 +4,7 @@ import time
 import aiohttp
 import asyncio
 import logging
+import traceback
 import azure.functions as func
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
@@ -46,7 +47,7 @@ async def execute_parallel_requests():
 
     # Cria uma sessão HTTP assíncrona
     async with aiohttp.ClientSession(
-        timeout=aiohttp.ClientTimeout(total=120)
+        timeout=aiohttp.ClientTimeout(total=300)
     ) as session:
         for payload in payloads:
             logging.info(f"Inicializando o payload: {payload}")
@@ -75,7 +76,7 @@ async def make_request(session: aiohttp.ClientSession, url, payload: dict):
                 return {"error": f"Status {response.status}"}
     except Exception as e:
         # Trata erros durante a requisição
-        logging.error(e)
+        logging.error(traceback.format_exc())
         return {"error": str(e)}
 
 
