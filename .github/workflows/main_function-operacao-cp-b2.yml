@@ -66,9 +66,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A880E57EBBD342EB87A1942F4ACE554A }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_34C07EE2A7AD4553B605F2DD7EA1175E }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_70C00A8AB5674DC4B54125E653D994FB }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_1DBB46312A6A4030AA6EC60B3535D470 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_E8ADB0269B184C18986D8313A850412A }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_B2A040E253CA45539647C796C2DFDC60 }}
 
       - name: 'Deploy to Azure Functions'
         uses: Azure/functions-action@v1
@@ -77,5 +77,4 @@ jobs:
           app-name: 'function-operacao-cp-b2'
           slot-name: 'Production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-          publish-profile: "${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}"
           
