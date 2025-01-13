@@ -35,16 +35,16 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Install Oryx
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y build-essential
-        curl -L -o oryx-linux-x64.tar.gz https://github.com/microsoft/Oryx/releases/latest/download/oryx-linux-x64.tar.gz
-        tar -xzf oryx-linux-x64.tar.gz -C /usr/local/bin
-        chmod +x /usr/local/bin/oryx
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential
+          curl -L -o oryx-linux-x64.tar.gz https://github.com/microsoft/Oryx/releases/latest/download/oryx-linux-x64.tar.gz
+          tar -xzf oryx-linux-x64.tar.gz -C /usr/local/bin
+          chmod +x /usr/local/bin/oryx
 
       - name: Run Oryx build
-      run: |
-        oryx build . --platform python --platform-version ${{ env.PYTHON_VERSION }} --output ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
+        run: |
+          oryx build . --platform python --platform-version ${{ env.PYTHON_VERSION }} --output ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
